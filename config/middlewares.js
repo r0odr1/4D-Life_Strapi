@@ -10,14 +10,39 @@ module.exports = [
   "strapi::favicon",
   "strapi::public",
   {
+    // name: "strapi::security",
+    // config: {
+    //   contentSecurityPolicy: {
+    //     useDefaults: true,
+    //     directives: {
+    //       "conect-src": ["'self'", "https:"],
+    //       "img-src": ["'self'", "data:", "blob:", "https://res.cloudinary.com"],
+    //       "media-src": ["'self'", "data:", "blob:"],
+    //       upgradeInsecureRequests: null,
+    //     },
+    //   },
+    // },
     name: "strapi::security",
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "conect-src": ["'self'", "https:"],
-          "img-src": ["'self'", "data:", "blob:", "https://res.cloudinary.com"],
-          "media-src": ["'self'", "data:", "blob:"],
+          "connect-src": ["'self'", "https:"],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "market-assets.strapi.io",
+            "res.cloudinary.com",
+            "https://res.cloudinary.com",
+          ],
+          "media-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "market-assets.strapi.io",
+            "res.cloudinary.com",
+          ],
           upgradeInsecureRequests: null,
         },
       },

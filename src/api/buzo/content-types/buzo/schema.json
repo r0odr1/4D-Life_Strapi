@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "blogs",
+  "collectionName": "buzos",
   "info": {
-    "singularName": "blog",
-    "pluralName": "blogs",
-    "displayName": "Blog",
+    "singularName": "buzo",
+    "pluralName": "buzos",
+    "displayName": "Buzo",
     "description": ""
   },
   "options": {
@@ -12,12 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "titulo": {
+    "nombre": {
       "type": "string",
       "required": true
     },
-    "resumen": {
-      "type": "string",
+    "descripcion": {
+      "type": "richtext",
       "required": true
     },
     "imagen": {
@@ -28,9 +28,12 @@
         "images"
       ]
     },
-    "contenido": {
-      "type": "richtext",
-      "required": true
+    "precio": {
+      "type": "integer"
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "nombre"
     }
   }
 }
