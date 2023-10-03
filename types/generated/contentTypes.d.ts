@@ -702,6 +702,39 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
+export interface ApiBloqueBloque extends Schema.SingleType {
+  collectionName: 'bloques';
+  info: {
+    singularName: 'bloque';
+    pluralName: 'bloques';
+    displayName: 'bloque';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String & Attribute.Required;
+    contenido: Attribute.Text & Attribute.Required;
+    imagen: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::bloque.bloque',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::bloque.bloque',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBuzoBuzo extends Schema.CollectionType {
   collectionName: 'buzos';
   info: {
@@ -746,6 +779,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog.blog': ApiBlogBlog;
+      'api::bloque.bloque': ApiBloqueBloque;
       'api::buzo.buzo': ApiBuzoBuzo;
     }
   }
